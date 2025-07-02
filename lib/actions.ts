@@ -52,7 +52,6 @@ export const shareMealHandler = async (
     };
   }
 
-  // Add this line to revalidate the meals page
   revalidatePath('/meals');
 
   redirect('/meals');

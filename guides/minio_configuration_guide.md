@@ -133,8 +133,8 @@ MinIO — это высокопроизводительное объектное
 
     const acessoMinioChave = process.env.MINIO_ACCESS_KEY;
     const segredoMinioChave = process.env.MINIO_SECRET_KEY;
-    const minioPontoFinal = process.env.MINIO_ENDPOINT; // Например, 'http://YOUR_VPS_IP:9000'
-    const minioRegiao = process.env.MINIO_REGION || 'us-east-1'; // MinIO обычно не требует конкретного региона, но SDK может его ожидать
+    const minioPontoFinal = process.env.MINIO_ENDPOINT;
+    const minioRegiao = process.env.MINIO_REGION || 'us-east-1';
 
     if (!acessoMinioChave || !segredoMinioChave || !minioPontoFinal) {
       throw new Error('As credenciais do MinIO ou o endpoint não estão configurados nas variáveis de ambiente.');
@@ -353,10 +353,6 @@ MinIO — это высокопроизводительное объектное
         notFound(); // Эта функция должна вызываться, если блюдо не найдено
       }
 
-      // Предполагается, что meal.instructions это строка с HTML-тегами <br />
-      // Если нет, то замена \n на <br /> должна быть здесь или в getMeal
-      // const formattedInstructions = meal.instructions.replace(/\n/g, '<br />');
-
       return (
         <>
           <header className={cl.header}>
@@ -392,10 +388,10 @@ MinIO — это высокопроизводительное объектное
       images: {
         remotePatterns: [
           {
-            protocol: 'http', // или 'https' если вы настроили SSL для MinIO
-            hostname: 'YOUR_VPS_IP', // IP вашего VPS или домен, если настроен
-            port: '9000', // Порт, на котором MinIO отдает файлы
-            pathname: `/${process.env.MINIO_BUCKET_NAME || 'nextjs-uploads'}/**`, // Путь к вашему бакету
+            protocol: 'http',
+            hostname: 'YOUR_VPS_IP',
+            port: '9000',
+            pathname: `/${process.env.MINIO_BUCKET_NAME || 'nextjs-uploads'}/**`,
           },
         ],
       },
